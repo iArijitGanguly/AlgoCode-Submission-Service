@@ -8,7 +8,7 @@ export interface AddSubmission {
 
 const addSubmissionSchema = {
     type: 'object',
-    required: ['userId', 'problemId', 'code', 'language', 'status'],
+    required: ['userId', 'problemId', 'code', 'language'],
     properties: {
         userId: { type: 'string' },
         problemId: { type: 'string'},

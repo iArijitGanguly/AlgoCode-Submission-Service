@@ -1,8 +1,8 @@
-import { AddSubmission } from '../dtos/addSubmissionDto';
 import submissionQueue from '../queues/submissionQueue';
+import { SubmissionPayload } from '../types/SubmissionPayload';
 
-async function submissionProducer(payload: AddSubmission) {
-    await submissionQueue.add('SubmissionQueue', payload);
+async function submissionProducer(payload: Record<string, SubmissionPayload>) {
+    await submissionQueue.add('SubmissionJob', payload);
 }
 
 export default submissionProducer;
