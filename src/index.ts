@@ -4,6 +4,7 @@ import app from './app';
 import connectToDb from './configs/dbConfig';
 import serverConfig from './configs/serverConfig';
 import errorHandler from './utils/errorHandler';
+import EvaluationWorker from './workers/EvaluationWorker';
 
 const server = fastify();
 
@@ -19,5 +20,6 @@ server.listen({ port: PORT }, async (err) => {
         process.exit(1);
     }
     await connectToDb();
+    EvaluationWorker('EvaluationQueue');
     console.log(`Server is started at PORT: ${PORT}`);
 });

@@ -1,6 +1,9 @@
+import { TestCase } from '../dtos/problemDetailsDto';
+
 export interface SubmissionPayload {
     code: string,
     language: string,
-    inputCase: string,
-    outputCase: string
+    testCases: TestCase[]
+    userId: string,
+    submissionId: string
 }
