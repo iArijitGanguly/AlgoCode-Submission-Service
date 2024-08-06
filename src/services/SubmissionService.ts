@@ -37,6 +37,11 @@ class SubmissionService {
         });
         return submission;
     }
+
+    async getSubmission(submissionId: string) {
+        const submission = await this.submissionRepository.getSubmission(submissionId);
+        return submission;
+    }
 }
 
 export default SubmissionService;

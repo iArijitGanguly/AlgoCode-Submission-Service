@@ -12,6 +12,8 @@ async function submissionRouter(fastify: FastifyInstance, _options: FastifyPlugi
         },
         handler: submissionController.createSubmission
     });
+
+    fastify.get('/:id', submissionController.getSubmission);
 }
 
 export default submissionRouter;

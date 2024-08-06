@@ -21,14 +21,13 @@ function EvaluationWorker(queueName: string) {
                 let statusToUpdate = 'SUCCESS';
                 for(const evaluation of response) {
                     if(evaluation.status == 'ERROR') {
-                        if(evaluation.output == 'MLE') {
-                            statusToUpdate = 'MLE';
-                            break;
+                        if(evaluation.output == 'TLE') {
+                            statusToUpdate = 'TLE';
                         }
                         else {
-                            statusToUpdate = 'TLE';
-                            break;
+                            statusToUpdate = evaluation.output;
                         }
+                        break;
                     }
                     else if(evaluation.status == 'WA') {
                         statusToUpdate = 'WA';
@@ -39,7 +38,7 @@ function EvaluationWorker(queueName: string) {
                 await submissionRepository.updateSubmission(submissionId, statusToUpdate);
 
                 try {
-                    const response = await axios.post('http://localhost:3003/sendPayload', {
+                    const response = await axios.post('http://localhost:3005/sendPayload', {
                         userId,
                         payload
                     });

@@ -1,3 +1,4 @@
+import cors from '@fastify/cors';
 import fastify from 'fastify';
 
 import app from './app';
@@ -9,6 +10,11 @@ import EvaluationWorker from './workers/EvaluationWorker';
 const server = fastify();
 
 const { PORT } = serverConfig;
+
+server.register(cors, {
+    origin: '*',
+    methods: ['GET', 'POST']
+});
 
 server.register(app);
 

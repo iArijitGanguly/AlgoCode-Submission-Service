@@ -7,3 +7,7 @@ declare module 'fastify' {
         submissionRepository: SubmissionRepository
     }
 }
+
+interface Params {
+    id: string
+}
